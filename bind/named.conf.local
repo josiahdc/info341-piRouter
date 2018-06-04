@@ -1,0 +1,33 @@
+view "internal" {
+	match-clients { localhost; 172.23.42.0/24; };
+	recursion yes;
+	allow-query { any; };
+
+	zone "castle.howl.pi" IN {
+		type master;
+		file "/etc/bind/zones/db.castle.howl.pi";
+	};
+
+	zone "howl.pi" IN {
+		type master;
+		file "/etc/bind/zones/db.howl.pi";
+	};
+
+	zone "pi" IN {
+		type slave;
+		masters { 10.10.10.10; };
+	};
+
+	include "/etc/bind/named.conf.default-zones";
+};
+
+view "external" {
+	match-clients { any; };
+	recursion no;
+	allow-query { any; };
+
+	zone "howl.pi" IN {
+		type master;
+		file "/etc/bind/zones/db.howl.pi";
+	};
+};

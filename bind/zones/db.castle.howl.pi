@@ -1,0 +1,18 @@
+;
+; BIND data file for castle.howl.pi private zone
+;
+$TTL	604800
+castle.howl.pi.		IN	SOA	calcifer.castle.howl.pi. hostmaster.castle.howl.pi. (
+		     2018060101		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+castle.howl.pi.		IN	NS	calcifer.castle.howl.pi.
+calcifer		IN	A	172.23.42.1
+
+castle.howl.pi.		IN	MX	10 mail.castle.howl.pi.
+mail			IN	A	172.23.42.66
+
+zza			IN	A	172.23.43.129
